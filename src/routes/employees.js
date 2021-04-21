@@ -6,6 +6,7 @@ const mysqlConnection = require('../database');
 
 // RUTAS
 // RETORNAR TODOS LOS DATOS
+// http://localhost:3005
 router.get('/' , (req , res)=>{
     mysqlConnection.query('SELECT * FROM employees', (err, rows, fields) => {
         if (!err) {
@@ -19,6 +20,7 @@ router.get('/' , (req , res)=>{
 
 
 // RETORNAR SOLO UN DATO
+// http://localhost:3005/1
 router.get('/:id' , (req , res)=>{
     // req.params.id
     const {id} = req.params;
@@ -37,9 +39,11 @@ router.get('/:id' , (req , res)=>{
 
 // GUARDAR
 /*
+http://localhost:3005
+Content-Type application/json
 {
-    "id" : 0
-    "name" : "Actualizado",
+    "id" : 0,
+    "name" : "Guardar registro",
     "salary": 2000
 }
 */
@@ -73,8 +77,10 @@ router.post('/' , (req , res)=>{
 
 // ACTUALIZAR
 /*
+http://localhost:3005/1
+Content-Type application/json
 {
-    "name" : "Actualizado",
+    "name" : "Actualizar registro",
     "salary": 2000
 }
 */
@@ -98,6 +104,7 @@ router.put('/:id' , (req , res)=>{
 
 
 // ELIMINAR
+// http://localhost:3005/1
 router.delete('/:id' , (req , res)=>{
 
     const {id} = req.params;
